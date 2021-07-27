@@ -15,6 +15,8 @@ public class SheetInitializeListener implements Listener {
         TestType testType = sheet.load("testType");
         System.out.println(testType.toString());
         testType.test.yes = "yes";
+
+        sheet.save("testType", testType);
     }
 
 }
