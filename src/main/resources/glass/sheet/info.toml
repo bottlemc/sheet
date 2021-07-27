@@ -1,0 +1,15 @@
+id = "sheet"
+version = "0.1.0"
+namespace = "com.github.bottlemc.sheet"
+
+[listeners]
+initialize = [
+    "SheetInitializeListener"
+]
+terminate = [
+    "SheetTerminateListener"
+]
+
+sheet = [
+    "TestSheetListener"
+]

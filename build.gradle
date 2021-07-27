@@ -28,5 +28,8 @@ repositories {
 }
 
 dependencies {
-    runtimeOnly 'com.github.glassmc:loader:v0.4.0'
+    runtimeOnly 'com.github.glassmc:loader:v0.4.1'
+
+    implementation 'com.github.glassmc:loader:v0.4.1'
+    implementation 'com.github.TheElectronWill:TOML-javalib:v1.2.2'
 }
