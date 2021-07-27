@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url = 'https://jitpack.io/'
+        }
+    }
+
+    dependencies {
+        classpath 'com.github.glassmc:kiln:v0.4.8'
+    }
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+apply plugin: 'kiln-standard'
+apply plugin: 'kiln-main'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://jitpack.io/'
+    }
+}
+
+dependencies {
+    runtimeOnly 'com.github.glassmc:loader:v0.4.0'
+}
