@@ -11,12 +11,6 @@ public class SheetInitializeListener implements Listener {
         GlassLoader.getInstance().registerAPI(sheet);
         GlassLoader.getInstance().runHooks("sheet");
         sheet.loadFromFiles();
-
-        TestType testType = sheet.load("testType");
-        System.out.println(testType.toString());
-        testType.test.yes = "yes";
-
-        sheet.save("testType", testType);
     }
 
 }
