@@ -81,12 +81,8 @@ public class Sheet {
                     } else {
                         Constructor<?> constructor = field.getType().getDeclaredConstructors()[0];
 
-                        Object newInstance;
-                        if(constructor.getParameterCount() == 0) {
-                            newInstance  = constructor.newInstance();
-                        } else {
-                            newInstance = constructor.newInstance((Object) null);
-                        }
+                        Object[] args = new Object[constructor.getParameterCount()];
+                        Object newInstance = constructor.newInstance(args);
                         field.set(typeObject, this.deserializeInternal((Map<String, Object>) entry.getValue(), newInstance));
                     }
                 } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
