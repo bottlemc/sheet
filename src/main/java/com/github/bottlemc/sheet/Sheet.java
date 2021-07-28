@@ -79,13 +79,18 @@ public class Sheet {
                     if(value.getClass().getPackage().getName().equals("java.lang")) {
                         field.set(typeObject, entry.getValue());
                     } else {
-                        Constructor<?> constructor = field.getType().getDeclaredConstructors()[0];
+                        for(Constructor<?> constructor : field.getType().getDeclaredConstructors()) {
+                            try {
+                                Object[] args = new Object[constructor.getParameterCount()];
+                                Object newInstance = constructor.newInstance(args);
+                                field.set(typeObject, this.deserializeInternal((Map<String, Object>) entry.getValue(), newInstance));
+                                break;
+                            } catch(Exception ignored) {
 
-                        Object[] args = new Object[constructor.getParameterCount()];
-                        Object newInstance = constructor.newInstance(args);
-                        field.set(typeObject, this.deserializeInternal((Map<String, Object>) entry.getValue(), newInstance));
+                            }
+                        }
                     }
-                } catch (IllegalAccessException | InstantiationException | InvocationTargetException e) {
+                } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
